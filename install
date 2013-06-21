@@ -2,20 +2,61 @@
 
 import os
 import shutil
+import hashlib
 
 homedir=os.environ['HOME']
-for fname in os.listdir('.'):
-    # dot_zshrc
-    if fname.startswith('dot_'):
-        dest=os.path.join(homedir, fname.replace('dot_', '.'))
-        print "Copying %s to %s" % (fname, dest)
-        shutil.copy(fname, dest)
-    # dot:d69445f_gitconfig 
-    if fname.startswith('dot:'):
-        username=fname.replace('dot:','').split('_',1)[0]
-        if username==os.getlogin():
-            dest=os.path.join(homedir, ".%s" % fname.split('_')[1])
-            print "Copying %s to %s" % (fname, dest)
-            shutil.copy(fname, dest)
+
+################################################################################
+def backup(dest):
+    backupdir=os.path.join(homedir,'.backup_dot')
+    if not os.path.exists(backupdir):
+        os.mkdir(backupdir)
+
+    if os.path.exists(dest):
+        dstmd5=hashlib.md5(open(dest).read()).hexdigest()
+        backup=os.path.join(backupdir, os.path.basename(dest))
+        if os.path.exists(backup):
+            bkupmd5=hashlib.md5(open(backup).read()).hexdigest()
+            if bkupmd5!=dstmd5:
+                print "Overriding backup of %s" % backup
+                shutil.copy(dest, backup)
+        else:
+            print "Backing up to %s" % backup
+            shutil.copy(dest, backup)
+
+################################################################################
+def install(src, dest, backupFlag=True):
+    """ Install the src file to dest if required
+    Take a backup of the overwritten file if needed
+    """
+    srcmd5=hashlib.md5(open(src).read()).hexdigest()
+    if os.path.exists(dest):
+        dstmd5=hashlib.md5(open(dest).read()).hexdigest()
+        if srcmd5==dstmd5:
+            return
+
+        if backupFlag:
+            backup(dest)
+
+    print "Copying %s to %s" % (src, dest)
+    shutil.copy(src, dest)
+
+################################################################################
+def main():
+    for fname in os.listdir('.'):
+        # dot_zshrc
+        if fname.startswith('dot_'):
+            dest=os.path.join(homedir, fname.replace('dot_', '.'))
+            install(fname, dest)
+        # dot:d69445f_gitconfig 
+        if fname.startswith('dot:'):
+            username=fname.replace('dot:','').split('_',1)[0]
+            if username==os.getlogin():
+                dest=os.path.join(homedir, ".%s" % fname.split('_')[1])
+                install(fname, dest)
+
+################################################################################
+if __name__=="__main__":
+    main()
 
 #EOF
