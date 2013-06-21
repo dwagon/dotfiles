@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+
+import os
+import shutil
+
+homedir=os.environ['HOME']
+for fname in os.listdir('.'):
+    # dot_zshrc
+    if fname.startswith('dot_'):
+        dest=os.path.join(homedir, fname.replace('dot_', '.'))
+        print "Copying %s to %s" % (fname, dest)
+        shutil.copy(fname, dest)
+    # dot:d69445f_gitconfig 
+    if fname.startswith('dot:'):
+        username=fname.replace('dot:','').split('_',1)[0]
+        if username==os.getlogin():
+            dest=os.path.join(homedir, ".%s" % fname.split('_')[1])
+            print "Copying %s to %s" % (fname, dest)
+            shutil.copy(fname, dest)
+
+#EOF
