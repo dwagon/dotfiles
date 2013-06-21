@@ -1,0 +1,6 @@
+set smartindent
+set ts=4
+set expandtab
+colo torte
+set sw=4
+set ai
