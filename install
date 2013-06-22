@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import sys
 import shutil
 import hashlib
 
@@ -29,6 +30,23 @@ def install(src, dest, backupFlag=True):
     """ Install the src file to dest if required
     Take a backup of the overwritten file if needed
     """
+    if os.path.isdir(src):
+    	install_dir(src, dest, backupFlag)
+    elif os.path.isfile(src):
+    	install_file(src, dest, backupFlag)
+    else:
+    	sys.stderr.write("I can't handle %s - if you want me I will be in my trailer\n" % src)
+
+################################################################################
+def install_dir(src, dest, backupFlag=True):
+    if not os.path.isdir(dest):
+    	print "Making %s" % dest
+    	os.mkdir(dest)
+    for fname in os.listdir(src):
+    	install(os.path.join(src, fname), os.path.join(dest, fname), backupFlag)
+
+################################################################################
+def install_file(src, dest, backupFlag=True):
     srcmd5=hashlib.md5(open(src).read()).hexdigest()
     if os.path.exists(dest):
         dstmd5=hashlib.md5(open(dest).read()).hexdigest()
@@ -44,14 +62,20 @@ def install(src, dest, backupFlag=True):
 ################################################################################
 def main():
     for fname in os.listdir('.'):
-        # dot_zshrc
+        # dot_<filename>
         if fname.startswith('dot_'):
             dest=os.path.join(homedir, fname.replace('dot_', '.'))
             install(fname, dest)
-        # dot:d69445f_gitconfig 
+        # dot:<username>_<filename> 
         if fname.startswith('dot:'):
             username=fname.replace('dot:','').split('_',1)[0]
             if username==os.getlogin():
+                dest=os.path.join(homedir, ".%s" % fname.split('_')[1])
+                install(fname, dest)
+        # dot@<hostname>_<filename> 
+        if fname.startswith('dot@'):
+            hostname=fname.replace('dot@','').split('_',1)[0]
+            if hostname==os.uname()[1]:
                 dest=os.path.join(homedir, ".%s" % fname.split('_')[1])
                 install(fname, dest)
 

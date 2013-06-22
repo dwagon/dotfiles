@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+# 
+# Script to
+#
+# Written by Dougal Scott <dougal.scott@tollgroup.com>
+# $Id$
+# $HeadURL$
+
+import os, sys, getopt
+
+verbFlag=False
+
+################################################################################
+def Verbose(msg):
+    if verbFlag:
+    	sys.stderr.write("%s\n" % msg)
+
+################################################################################
+def Warning(msg):
+    sys.stderr.write("Warning: %s\n" % msg)
+
+################################################################################
+def Fatal(msg):
+    sys.stderr.write("Fatal: %s\n" % msg)
+    sys.exit(255)
+
+################################################################################
+def usage():
+    sys.stderr.write("Usage: %s\n" % sys.argv[0])
+
+################################################################################
+def main():
+    pass
+
+################################################################################
+if __name__=="__main__":
+    try:
+    	opts,args=getopt.getopt(sys.argv[1:], "vh")
+    except getopt.GetoptError,err:
+    	sys.stderr.write("Error: %s\n" % str(err))
+    	usage()
+	sys.exit(1)
+
+    for o,a in opts:
+    	if o=="-v":
+	    verbFlag=True
+    	if o=="-h":
+	    usage()
+	    sys.exit(0)
+
+    main()
+
+#EOF

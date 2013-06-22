@@ -1,4 +1,15 @@
 export PATH=/opt/app/python/bin:/sbin:/usr/sbin:$PATH
 unset LS_COLORS
+umask 022
 export RPROMPT=%~
-alias vi=vim
+export PROMPT='%m %# '
+setopt hist_ignore_all_dups
+which vim >/dev/null 2>&1
+hasvim=$?
+if [ $hasvim -eq 0 ]; then
+    alias vi=vim
+    export EDITOR=vim
+else
+    export EDITOR=vi
+fi
+export PAGER=less
