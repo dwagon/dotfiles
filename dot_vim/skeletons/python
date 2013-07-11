@@ -2,21 +2,17 @@
 # 
 # Script to
 #
-# Written by Dougal Scott <dougal.scott@tollgroup.com>
-# $Id$
-# $HeadURL$
+# Written by Dougal Scott <dougal.scott@gmail.com>
 
-import os, sys, getopt
-
-verbFlag=False
+import os, sys, argparse
 
 ################################################################################
 def Verbose(msg):
-    if verbFlag:
+    if namespace.verbFlag:
     	sys.stderr.write("%s\n" % msg)
 
 ################################################################################
-def Warning(msg):
+def Warn(msg):
     sys.stderr.write("Warning: %s\n" % msg)
 
 ################################################################################
@@ -25,29 +21,18 @@ def Fatal(msg):
     sys.exit(255)
 
 ################################################################################
-def usage():
-    sys.stderr.write("Usage: %s\n" % sys.argv[0])
+def parseArgs():
+    global namespace
+    parser=argparse.ArgumentParser()
+    parser.add_argument('-v', '--verbose', dest='verbFlag', action='store_true', default=False)
+    namespace=parser.parse_args()
 
 ################################################################################
 def main():
-    pass
+    parseArgs()
 
 ################################################################################
 if __name__=="__main__":
-    try:
-    	opts,args=getopt.getopt(sys.argv[1:], "vh")
-    except getopt.GetoptError,err:
-    	sys.stderr.write("Error: %s\n" % str(err))
-    	usage()
-	sys.exit(1)
-
-    for o,a in opts:
-    	if o=="-v":
-	    verbFlag=True
-    	if o=="-h":
-	    usage()
-	    sys.exit(0)
-
     main()
 
 #EOF
