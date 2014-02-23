@@ -1,4 +1,4 @@
-colo torte
+colo default
 let g:tex_fold_enabled=0
 set ai
 set expandtab
