@@ -1,4 +1,4 @@
-export PATH=/opt/app/python/bin:/sbin:/usr/sbin:/opt/local/bin:$PATH
+export PATH=/opt/local/bin:/opt/app/python/bin:/sbin:/usr/sbin:$PATH
 unset LS_COLORS
 umask 022
 export RPROMPT=%~
