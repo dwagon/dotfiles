@@ -1,9 +1,11 @@
-export PATH=/opt/local/bin:/opt/app/python/bin:/sbin:/usr/sbin:$PATH
+export PATH=/opt/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$HOME/bin
+source ~/antigen/antigen.zsh
 unset LS_COLORS
 umask 022
 export RPROMPT=%~
 export PROMPT='%m %# '
 setopt hist_ignore_all_dups
+setopt hist_verify
 which vim >/dev/null 2>&1
 hasvim=$?
 if [ $hasvim -eq 0 ]; then
@@ -13,3 +15,33 @@ else
     export EDITOR=vi
 fi
 export PAGER=less
+
+antigen use oh-my-zsh
+antigen bundle git
+
+# Load the theme.
+antigen theme candy
+
+# Tell antigen that you're done.
+antigen apply
+
+# Time=%{$fg[blue]%}%D{[%I:%M]}%{$reset_color%}
+export PROMPT='%{$fg_bold[green]%}%n@%m %{$fg[blue]%}%#%{$reset_color%} '
+export RPROMPT='%~ %{$fg[green]%}$(current_branch)%{$reset_color%}'
+
+export WORKON_HOME=$HOME/.venvs
+source /opt/local/bin/virtualenvwrapper.sh-2.7
+
+# pip zsh completion start
+function _pip_completion {
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=( $( COMP_WORDS="$words[*]" \
+             COMP_CWORD=$(( cword-1 )) \
+             PIP_AUTO_COMPLETE=1 $words[1] ) )
+}
+compctl -K _pip_completion pip
+# pip zsh completion end
+
+#EOF
