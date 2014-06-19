@@ -1,7 +1,16 @@
-#!/bin/bash +x
+#!/bin/bash
 
-source pkgfunc
+os=`uname`
 
-pkgadd zsh
+case $os in
+    Darwin)
+        sudo port install git-core
+        sudo port install git-flow
+        ;;
+    *)
+        echo "Unsupported os ${os}"
+esac
+
+git clone https://github.com/zsh-users/antigen.git
 
 #EOF
