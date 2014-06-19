@@ -85,6 +85,11 @@ def main():
             if hostname == os.uname()[1]:
                 dest = os.path.join(homedir, ".%s" % fname.split('_')[1])
                 install(fname, dest)
+        # install
+        if fname.startswith('install_'):
+            with os.popen(fname) as f:
+                for line in f:
+                    print line.rstrip()
 
 
 ###############################################################################
