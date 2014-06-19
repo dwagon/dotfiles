@@ -1,0 +1,14 @@
+#!/bin/bash
+
+function pkgadd {
+    os=`uname`
+    case $os in
+    Darwin)
+        sudo port install $1
+        ;;
+    *)
+        echo "Undefined OS $os"
+    esac
+}
+
+#EOF
