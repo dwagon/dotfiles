@@ -1,0 +1,14 @@
+#!/bin/bash
+
+os=`uname`
+
+case $os in
+    Darwin)
+        sudo port install git-core
+        sudo port install git-flow
+        ;;
+    *)
+        echo "Unsupported os ${os}"
+esac
+
+#EOF
