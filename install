@@ -87,7 +87,7 @@ def main():
                 install(fname, dest)
         # install
         if fname.startswith('install_'):
-            with os.popen(fname) as f:
+            with os.popen(os.path.join('.', fname)) as f:
                 for line in f:
                     print line.rstrip()
 
