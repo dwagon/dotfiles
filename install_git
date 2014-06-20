@@ -7,6 +7,10 @@ case $os in
         sudo port install git-core
         sudo port install git-flow
         ;;
+    Linux)
+        sudo apt-get install git-core
+        sudo apt-get install git-flow
+        ;;
     *)
         echo "Unsupported os ${os}"
 esac
