@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 colo default
 let g:tex_fold_enabled=0
 set ai
