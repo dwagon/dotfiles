@@ -12,5 +12,11 @@ case $os in
     *)
         echo "Unsupported os ${os}"
 esac
+ 
+mkdir -p ~/.vim/autoload
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+mkdir -p ~/.vim/bundle
+cd ~/.vim/bundle && git clone https://github.com/scrooloose/syntastic.git
 
 #EOF
