@@ -1,4 +1,4 @@
-export PATH=/opt/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$HOME/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:$HOME/bin
 source ~/antigen/antigen.zsh
 unset LS_COLORS
 umask 022
@@ -30,7 +30,7 @@ export PROMPT='%{$fg_bold[green]%}%n@%m %{$fg[blue]%}%#%{$reset_color%} '
 export RPROMPT='%~ %{$fg[green]%}$(current_branch)%{$reset_color%}'
 
 export WORKON_HOME=$HOME/.venvs
-source /opt/local/bin/virtualenvwrapper.sh-2.7
+source /usr/local/bin/virtualenvwrapper.sh
 
 # pip zsh completion start
 function _pip_completion {
