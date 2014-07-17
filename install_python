@@ -4,10 +4,9 @@ os=`uname`
 
 case $os in
     Darwin)
-        sudo port install python27
-        sudo port install py27-pip
-        sudo port install py27-virtualenv
-        sudo port install py27-virtualenvwrapper
+        sudo brew install python
+        sudo pip install virtualenv
+        sudo pip install virtualenvwrapper
         ;;
     Linux)
         sudo apt-get install python2.7

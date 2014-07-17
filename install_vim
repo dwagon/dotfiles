@@ -4,7 +4,7 @@ os=`uname`
 
 case $os in
     Darwin)
-        sudo port install vim
+        sudo brew install vim
         ;;
     Linux)
         sudo apt-get install vim

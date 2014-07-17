@@ -4,7 +4,8 @@ os=`uname`
 
 case $os in
     Darwin)
-        sudo port install zsh
+        # Should already be installed by default
+        sudo brew install zsh
         ;;
     Linux)
         sudo apt-get install zsh

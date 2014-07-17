@@ -4,8 +4,8 @@ os=`uname`
 
 case $os in
     Darwin)
-        sudo port install git-core
-        sudo port install git-flow
+        sudo brew install git
+        sudo brew install git-flow
         ;;
     Linux)
         sudo apt-get install git-core
