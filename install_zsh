@@ -14,6 +14,9 @@ case $os in
         echo "Unsupported os ${os}"
 esac
 
-git clone https://github.com/zsh-users/antigen.git
+cd $HOME
+if [ ! -d antigen ]; then
+    git clone https://github.com/zsh-users/antigen.git
+fi
 
 #EOF
