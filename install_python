@@ -11,6 +11,7 @@ case $os in
     Linux)
         sudo apt-get install -y python2.7
         sudo apt-get install -y python-pip
+        sudo apt-get install -y python-dev
         sudo apt-get install -y python-virtualenv
         sudo apt-get install -y virtualenvwrapper
         sudo pip install flake8
