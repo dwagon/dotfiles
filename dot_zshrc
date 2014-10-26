@@ -30,7 +30,13 @@ export PROMPT='%{$fg_bold[green]%}%n@%m %{$fg[blue]%}%#%{$reset_color%} '
 export RPROMPT='%~ %{$fg[green]%}$(current_branch)%{$reset_color%}'
 
 export WORKON_HOME=$HOME/.venvs
-source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+if [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+elif [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+else
+    echo "No virtualenvwrapper installed"
+fi
 
 # pip zsh completion start
 function _pip_completion {
