@@ -4,7 +4,7 @@ os=`uname`
 
 case $os in
     Darwin)
-        sudo brew install python
+        brew install python
         sudo pip install virtualenv
         sudo pip install virtualenvwrapper
         ;;
