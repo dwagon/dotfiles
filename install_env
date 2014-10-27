@@ -1,0 +1,15 @@
+#!/bin/bash
+
+os=`uname`
+
+case $os in
+    Darwin)
+        sudo pip install fabric
+        ;;
+    Linux)
+        ;;
+    *)
+        echo "Unsupported os ${os}"
+esac
+
+#EOF
