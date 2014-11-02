@@ -4,6 +4,8 @@ os=`uname`
 
 case $os in
     Darwin)
+        brew install openssl
+        brew install sqlite
         brew install python
         sudo pip install virtualenv
         sudo pip install virtualenvwrapper
