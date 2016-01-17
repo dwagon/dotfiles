@@ -1,0 +1,15 @@
+---
+- name: "install vim on macos"
+  homebrew: name=vim state=installed
+  when: ansible_distribution == "MacOSX"
+
+- name: "install vim on ubuntu"
+  apt: name=vim state=installed
+  when: ansible_distribution == "Ubuntu"
+  become_method: sudo
+
+- name: "vimrc configfile"
+  copy: src=dot_vimrc dest={{ansible_user_dir}}/.vimrc
+
+- name: "vim configdir"
+  copy: src=dot_vim dest={{ansible_user_dir}}/.vim

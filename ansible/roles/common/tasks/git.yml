@@ -1,0 +1,21 @@
+---
+- name: "install git on macos"
+  homebrew: name="{{item}}" state=installed
+  with_items:
+    - git-core
+    - git-flow
+  when: ansible_distribution == "MacOSX"
+
+- name: "install git on ubuntu"
+  apt: name="{{item}}" state=installed
+  with_items:
+    - git-core
+    - git-flow
+  when: ansible_distribution == "Ubuntu"
+  become_method: sudo
+
+- name: "gitconfig configfile"
+  copy: src=dot_gitconfig dest={{ansible_user_dir}}/.gitconfig
+
+- name: "gitignore configfile"
+  copy: src=dot_gitignore_global dest={{ansible_user_dir}}/.gitignore_global

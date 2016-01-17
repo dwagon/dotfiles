@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <TITLE>System Group</TITLE>
+<!--$Id: index.html,v 1.158 2002/06/04 08:27:20 dwagon Exp $-->
+<!--#config timefmt="%d %B %Y"-->
+</HEAD>
+<BODY>
+<!--#include virtual="/template/intheader.html"-->
+
+
+<HR>
+<TABLE BORDER=0 >
+  <TR>
+    <TD>Maintained by:</TD>
+    <TD><A HREF="mailto:dwagon@connect.com.au">Dougal Scott</A></TD>
+    </TR>
+
+  <tr>
+    <td>Id:</td>
+    <td>$Id$</td>
+    </tr>
+
+  <TR>
+    <TD>Last updated:</TD>
+    <TD><!--#echo var="LAST_MODIFIED"--></TD>
+    </TR>
+  </TABLE>
+<!--#include virtual="/template/intfooter.html"-->
+</BODY>
+</HTML>
