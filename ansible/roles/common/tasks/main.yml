@@ -2,3 +2,5 @@
 - include: git.yml
 - include: zsh.yml
 - include: vim.yml
+- include: python.yml
+- include: nethack.yml

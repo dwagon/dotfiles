@@ -13,3 +13,9 @@
 
 - name: "vim configdir"
   copy: src=dot_vim dest={{ansible_user_dir}}/.vim
+
+
+- name: install antigen
+  git: 
+    repo=https://github.com/scrooloose/syntastic.git
+    dest={{ansible_user_dir}}/.vim/bundle

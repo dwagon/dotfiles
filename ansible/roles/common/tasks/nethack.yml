@@ -1,0 +1,15 @@
+---
+- name: "install nethack on macos"
+  homebrew: name={{item}} state=installed
+  with_items:
+    - nethack
+  when: ansible_distribution == "MacOSX"
+
+- name: "install nethack on ubuntu"
+  apt: name={{item}} state=installed
+  with_items:
+    - nethack-console
+  when: ansible_distribution == "Ubuntu"
+
+- name: "nethackrc configdir"
+  copy: src=dot_nethackrc dest={{ansible_user_dir}}/.nethackrc
