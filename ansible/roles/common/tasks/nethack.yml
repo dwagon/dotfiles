@@ -10,6 +10,7 @@
   with_items:
     - nethack-console
   when: ansible_distribution == "Ubuntu"
+  become: yes
 
 - name: "nethackrc configdir"
   copy: src=dot_nethackrc dest={{ansible_user_dir}}/.nethackrc

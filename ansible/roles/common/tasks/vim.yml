@@ -6,7 +6,7 @@
 - name: "install vim on ubuntu"
   apt: name=vim state=installed
   when: ansible_distribution == "Ubuntu"
-  become_method: sudo
+  become: yes
 
 - name: "vimrc configfile"
   copy: src=dot_vimrc dest={{ansible_user_dir}}/.vimrc

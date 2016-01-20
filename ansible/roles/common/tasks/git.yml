@@ -12,7 +12,7 @@
     - git-core
     - git-flow
   when: ansible_distribution == "Ubuntu"
-  become_method: sudo
+  become: yes
 
 - name: "gitconfig configfile"
   copy: src=dot_gitconfig dest={{ansible_user_dir}}/.gitconfig
