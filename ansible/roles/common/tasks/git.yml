@@ -2,7 +2,7 @@
 - name: "install git on macos"
   homebrew: name="{{item}}" state=installed
   with_items:
-    - git-core
+    - git
     - git-flow
   when: ansible_distribution == "MacOSX"
 
