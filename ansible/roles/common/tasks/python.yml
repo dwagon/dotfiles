@@ -11,6 +11,10 @@
     - python3
   when: ansible_distribution == "MacOSX"
 
+- name: "install virtualenvwrapper on MacOSX"
+  pip: name=virtualenvwrapper
+  when: ansible_distribution == "MacOSX"
+
 - name: "install python on ubuntu"
   apt: name={{item}} state=installed
   with_items:
