@@ -32,3 +32,10 @@
     - python3-pip
   when: ansible_distribution == "Ubuntu"
   become: yes
+
+- name: "install flake8"
+  pip: name=flake8
+
+- name: "flake8 config"
+  copy: src=flake8 dest={{ansible_user_dir}}/.config/flake8
+
