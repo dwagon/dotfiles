@@ -1,4 +1,4 @@
 set sta
 setlocal et
-setlocal sts
+setlocal sts=4
 setlocal ai
