@@ -4,6 +4,7 @@
 - include: vim.yml
 - include: python.yml
 - include: nethack.yml
+- include: misc.yml
 
 - name: "Copy configdir"
   copy: src=dot_config dest={{ansible_user_dir}}/.config

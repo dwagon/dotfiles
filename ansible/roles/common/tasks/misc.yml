@@ -1,0 +1,4 @@
+---
+- name: "install fabric on macos"
+  homebrew: name=fabric state=installed
+  when: ansible_distribution == "MacOSX"
