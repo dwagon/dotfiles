@@ -2,3 +2,7 @@
 - name: "install fabric on macos"
   homebrew: name=fabric state=installed
   when: ansible_distribution == "MacOSX"
+
+- name: "install wireshark on macos"
+  homebrew: name=wireshark install_optiosn=with-gtk+,with-qa
+  when: ansible_distribution == "MacOSX"
