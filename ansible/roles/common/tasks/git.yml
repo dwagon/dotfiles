@@ -14,6 +14,14 @@
   when: ansible_distribution == "Ubuntu"
   become: yes
 
+- name: "install git on CentOS"
+  yum: name="{{item}}" state=installed
+  with_items:
+    - git
+    - gitflow
+  when: ansible_distribution == "CentOS"
+  become: yes
+
 - name: "gitconfig configfile"
   copy: src=dot_gitconfig dest={{ansible_user_dir}}/.gitconfig
 

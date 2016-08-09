@@ -3,6 +3,11 @@
   homebrew: name=vim state=installed
   when: ansible_distribution == "MacOSX"
 
+- name: "install vim on CentOS"
+  yum: name=vim state=installed
+  when: ansible_distribution == "CentOS"
+  become: yes
+
 - name: "install vim on ubuntu"
   apt: name=vim state=installed
   when: ansible_distribution == "Ubuntu"
