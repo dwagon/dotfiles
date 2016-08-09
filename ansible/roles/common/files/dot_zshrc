@@ -15,7 +15,6 @@ else
     export EDITOR=vi
 fi
 export PAGER=less
-source /usr/local/bin/virtualenvwrapper.sh
 #source .zsh/git-flow-completion.zsh
 
 
@@ -49,6 +48,8 @@ if [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then
     source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 elif [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
+elif [ -f /usr/bin/virtualenvwrapper.sh ]; then
+    source /usr/bin/virtualenvwrapper.sh
 else
     echo "No virtualenvwrapper installed"
 fi
