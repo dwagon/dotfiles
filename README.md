@@ -10,7 +10,7 @@ Install ansible (pip install ansible)
 Getting it to work from minimal centos
 --------------------------------------
 
-yum install git gcc python-devel libffi-devel openssl-devel
+yum install git gcc python-devel libffi-devel openssl-devel libselinux-python
 rpm -iUvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum install python-pip
 pip install ansible
