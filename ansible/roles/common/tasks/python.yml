@@ -12,7 +12,9 @@
   when: ansible_distribution == "MacOSX"
 
 - name: "install virtualenvwrapper on MacOSX"
-  pip: name=virtualenvwrapper
+  pip: 
+    name: virtualenvwrapper
+      executable: /usr/local/bin/pip
   when: ansible_distribution == "MacOSX"
 
 - name: "install python on ubuntu"
