@@ -14,7 +14,7 @@
 - name: "install virtualenvwrapper on MacOSX"
   pip: 
     name: virtualenvwrapper
-      executable: /usr/local/bin/pip
+    executable: /usr/local/bin/pip
   when: ansible_distribution == "MacOSX"
 
 - name: "install python on ubuntu"
@@ -41,7 +41,9 @@
   become: yes
 
 - name: "install flake8"
-  pip: name=flake8
+  pip: 
+    name: flake8
+    executable: /usr/local/bin/pip
   become: yes
 
 - name: "Config directory"
