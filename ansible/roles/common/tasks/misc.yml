@@ -6,3 +6,7 @@
 - name: "install wireshark on macos"
   homebrew: name=wireshark install_optiosn=with-gtk+,with-qa
   when: ansible_distribution == "MacOSX"
+
+- name: "install wget on macos"
+  homebrew: name=wget state=installed
+  when: ansible_distribution == "MacOSX"
