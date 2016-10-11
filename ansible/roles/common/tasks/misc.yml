@@ -4,7 +4,7 @@
   when: ansible_distribution == "MacOSX"
 
 - name: "install wireshark on macos"
-  homebrew: name=wireshark install_optiosn=with-gtk+,with-qa
+  homebrew: name=wireshark install_options=with-gtk+,with-qa
   when: ansible_distribution == "MacOSX"
 
 - name: "install wget on macos"

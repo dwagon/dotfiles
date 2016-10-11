@@ -12,7 +12,9 @@
   when: ansible_distribution == "MacOSX"
 
 - name: "install virtualenvwrapper on MacOSX"
-  pip: name=virtualenvwrapper
+  pip: 
+    name: virtualenvwrapper
+    executable: /usr/local/bin/pip
   when: ansible_distribution == "MacOSX"
 
 - name: "install python on ubuntu"
@@ -22,23 +24,30 @@
     - python-pip
     - python-virtualenv
     - virtualenvwrapper
-  when: ansible_distribution == "Ubuntu"
-  become: yes
-
-- name: "install python3 on ubuntu"
-  apt: name={{item}} state=installed
-  with_items:
     - python3
     - python3-pip
   when: ansible_distribution == "Ubuntu"
   become: yes
 
+- name: "install python on CentOS"
+  yum: name={{item}} state=installed
+  with_items:
+    - python
+    - python-pip
+    - python-virtualenv
+    - python-virtualenvwrapper
+    - python34
+  when: ansible_distribution == "CentOS"
+  become: yes
+
 - name: "install flake8"
-  pip: name=flake8
+  pip: 
+    name: flake8
+    executable: /usr/local/bin/pip
+  become: yes
+
+- name: "Config directory"
+  file: path={{ansible_user_dir}}/.config state=directory
 
 - name: "flake8 config"
   copy: src=flake8 dest={{ansible_user_dir}}/.config/flake8
-
-- name: "pep8 config"
-  copy: src=pep8 dest={{ansible_user_dir}}/.config/pep8
-

@@ -8,6 +8,11 @@
   when: ansible_distribution == "Ubuntu"
   become: yes
 
+- name: "install zsh on CentOS"
+  yum: name=zsh state=installed
+  when: ansible_distribution == "CentOS"
+  become: yes
+
 - name: configure zsh
   copy: src=dot_zshrc dest={{ansible_user_dir}}/.zshrc
 
