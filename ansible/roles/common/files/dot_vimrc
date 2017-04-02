@@ -1,11 +1,56 @@
 execute pathogen#infect()
 
 colo default
-let g:tex_fold_enabled=0
 set ai
 set expandtab
 set guioptions=agimrLt
+
+set history=1000
+set undolevels=1000
+
+" -- backup and swap files -----------------------------------------------------
+
+set backup      " enable backup files
+set writebackup " enable backup files
+set swapfile    " enable swap files (useful when loading huge files)
+
+let s:vimdir=$HOME . "/.vim"
+let &backupdir=s:vimdir . "/backup"  " backups location
+let &directory=s:vimdir . "/tmp"     " swap location
+
+if exists("*mkdir")
+  if !isdirectory(s:vimdir)
+    call mkdir(s:vimdir, "p")
+  endif
+  if !isdirectory(&backupdir)
+    call mkdir(&backupdir, "p")
+  endif
+  if !isdirectory(&directory)
+    call mkdir(&directory, "p")
+  endif
+endif
+
+set backupskip+=*.tmp " skip backup for *.tmp
+
+if has("persistent_undo")
+  let &undodir=&backupdir
+  set undofile  " enable persistent undo
+endif
+
+let &viminfo=&viminfo . ",n" . s:vimdir . "/.viminfo" " viminfo location
+
+" -- file type detection -------------------------------------------------------
+
+filetype on         " /!\ doesn't play well with compatible mode
+filetype plugin on  " trigger file type specific plugins
+filetype indent on  " indent based on file type syntax
+
 set incsearch
+set wrapscan
+set hlsearch
+set ignorecase
+set smartcase   " case insensitive only if search pattern is all lowercase
+
 set ruler
 set scrolloff=5
 set sm
@@ -15,8 +60,9 @@ set sw=4
 set ts=4
 syn on
 set backupcopy=yes
-filetype on
-filetype plugin on
+set backupcopy=yes
+set title
+set mousehide
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -26,3 +72,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" sudo then write
+cabbrev w!! w !sudo tee % >/dev/null
+
+" switch between windows by hitting <Tab> twice
+nnoremap <silent> <Tab><Tab> <C-w>w
+
+set matchpairs+=<:>    " make < and > match
+
+let b:syntastic_c_cflags = ' -I/usr/local/Cellar/json-c/0.12/include/json-c'
