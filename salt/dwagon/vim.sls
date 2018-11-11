@@ -25,3 +25,8 @@ vim:
         - user: dwagon
     require:
         - file: ~dwagon/.vim
+
+~dwagon/.vim/pathogen:
+    git.latest:
+      - name: https://tpo.pe/pathogen.vim
+      - target: ~/.vim/autoload/pathogen.vim
