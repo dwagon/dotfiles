@@ -26,7 +26,7 @@ vim:
     require:
         - file: ~dwagon/.vim
 
-~dwagon/.vim/pathogen:
-    git.latest:
-      - name: https://tpo.pe/pathogen.vim
-      - target: ~/.vim/autoload/pathogen.vim
+~dwagon/.vim/pathogen.vim:
+    cmd.run:
+        -name: curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+        -creates ~/.vim/autoload/pathogen.vim
