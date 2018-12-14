@@ -2,6 +2,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:$HOME/b
 source ~/antigen/antigen.zsh
 unset LS_COLORS
 umask 022
+export LESS="-XRF $LESS"
 export RPROMPT=%~
 export PROMPT='%m %# '
 setopt hist_ignore_all_dups
