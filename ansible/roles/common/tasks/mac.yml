@@ -1,0 +1,5 @@
+---
+- name: "install zsh on macos"
+  homebrew: name=menumeters state=installed
+  when: ansible_distribution == "MacOSX"
+

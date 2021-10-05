@@ -45,15 +45,8 @@ export RPROMPT='%~ %{$fg[green]%}$(current_branch)%{$reset_color%}'
 #eval "$(rbenv init -)"
 
 export WORKON_HOME=$HOME/.venvs
-if [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then
-    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-elif [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-elif [ -f /usr/bin/virtualenvwrapper.sh ]; then
-    source /usr/bin/virtualenvwrapper.sh
-else
-    echo "No virtualenvwrapper installed"
-fi
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+source ~/Library/Python/3.9/bin/virtualenvwrapper.sh
 
 # pip zsh completion start
 function _pip_completion {
