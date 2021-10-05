@@ -13,3 +13,5 @@
 - name: "ssh config"
   copy: src=ssh_config_mac dest={{ansible_user_dir}}/.ssh/config
   when: ansible_distribution == "MacOSX"
+
+- name: "awscli"

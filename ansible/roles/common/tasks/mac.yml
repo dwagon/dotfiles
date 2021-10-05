@@ -1,5 +1,17 @@
 ---
-- name: "install zsh on macos"
-  homebrew: name=menumeters state=installed
+- name: "install cloud on macos"
+  homebrew: name="{{item}}" state=installed
+  with_items:
+    - awscli
+    - azure-cli
+    - saml2aws
+    - terraform
+    - terragrunt
   when: ansible_distribution == "MacOSX"
 
+- name: "install misc bits on macos"
+  homebrew: name="{{item}}" state=installed
+  with_items:
+    - gource
+    - graphviz
+  when: ansible_distribution == "MacOSX"

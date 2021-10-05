@@ -6,6 +6,7 @@
     - black
     - flake8
     - pylint
+    - cookiecutter
   when: ansible_distribution == "MacOSX"
 
 - name: "install python on ubuntu"
