@@ -3,6 +3,15 @@ dotfiles
 
 Personal dotfiles
 
+Mac
+---
+Install Homebrew 
+Ensure running sshd
+Ensure can ssh to localhost with no password
+```
+ brew install ansible```
+```
+
 Install ansible (pip install ansible)
 ```
  cd ansible

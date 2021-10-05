@@ -1,12 +1,15 @@
 ---
-- name: "install fabric on macos"
-  homebrew: name=fabric state=installed
-  when: ansible_distribution == "MacOSX"
-
 - name: "install wireshark on macos"
-  homebrew: name=wireshark install_options=with-gtk+,with-qa
+  homebrew: name=wireshark
   when: ansible_distribution == "MacOSX"
 
 - name: "install wget on macos"
   homebrew: name=wget state=installed
+  when: ansible_distribution == "MacOSX"
+
+- name: "ssh dir"
+  file: path={{ansible_user_dir}}/.ssh state=directory
+
+- name: "ssh config"
+  copy: src=ssh_config_mac dest={{ansible_user_dir}}/.ssh/config
   when: ansible_distribution == "MacOSX"
