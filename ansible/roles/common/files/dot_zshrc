@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:$HOME/bin
+export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:$HOME/bin
 source ~/antigen/antigen.zsh
 unset LS_COLORS
 umask 022
@@ -46,7 +46,9 @@ export RPROMPT='%~ %{$fg[green]%}$(current_branch)%{$reset_color%}'
 
 export WORKON_HOME=$HOME/.venvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+if [ -f ~/Library/Python/3.9/bin/virtualenvwrapper.sh ]; then
 source ~/Library/Python/3.9/bin/virtualenvwrapper.sh
+fi
 
 # pip zsh completion start
 function _pip_completion {
