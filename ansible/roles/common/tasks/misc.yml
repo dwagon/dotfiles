@@ -1,10 +1,10 @@
 ---
-- name: "install fabric on macos"
-  homebrew: name=fabric state=installed
+- name: "install wireshark_chmod on macos"
+  homebrew: name=wireshark-chmodbpf
   when: ansible_distribution == "MacOSX"
 
 - name: "install wireshark on macos"
-  homebrew: name=wireshark install_options=with-gtk+,with-qa
+  homebrew: name=wireshark
   when: ansible_distribution == "MacOSX"
 
 - name: "install wget on macos"
