@@ -8,7 +8,8 @@
   when: ansible_distribution == "MacOSX"
 
 - name: "ssh dir"
-  file: path={{anisble_user_dir}/.ssh state=directory
+  file: path={{anisble_user_dir}}/.ssh state=directory
 
 - name: "ssh config"
-  copy: src=ssh_config dest={{ansible_user_dir}}/.ssh/config
+  copy: src=ssh_config_mac dest={{ansible_user_dir}}/.ssh/config
+  when: ansible_distribution == "MacOSX"
