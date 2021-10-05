@@ -10,3 +10,9 @@
 - name: "install wget on macos"
   homebrew: name=wget state=installed
   when: ansible_distribution == "MacOSX"
+
+- name: "ssh dir"
+  file: path={{anisble_user_dir}/.ssh state=directory
+
+- name: "ssh config"
+  copy: src=ssh_config dest={{ansible_user_dir}}/.ssh/config
