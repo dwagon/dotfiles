@@ -1,8 +1,4 @@
 ---
-- name: "install wireshark_chmod on macos"
-  homebrew: name=wireshark-chmodbpf
-  when: ansible_distribution == "MacOSX"
-
 - name: "install wireshark on macos"
   homebrew: name=wireshark
   when: ansible_distribution == "MacOSX"
