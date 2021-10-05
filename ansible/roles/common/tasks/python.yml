@@ -1,20 +1,11 @@
 ---
-- name: "install python on macos"
-  homebrew: name={{item}} state=installed
-  with_items:
-    - python
-  when: ansible_distribution == "MacOSX"
-
 - name: "install python3 on macos"
   homebrew: name={{item}} state=installed
   with_items:
     - python3
-  when: ansible_distribution == "MacOSX"
-
-- name: "install virtualenvwrapper on MacOSX"
-  pip: 
-    name: virtualenvwrapper
-    executable: /usr/local/bin/pip
+    - black
+    - flake8
+    - pylint
   when: ansible_distribution == "MacOSX"
 
 - name: "install python on ubuntu"
@@ -38,12 +29,6 @@
     - python-virtualenvwrapper
     - python34
   when: ansible_distribution == "CentOS"
-  become: yes
-
-- name: "install flake8"
-  pip: 
-    name: flake8
-    executable: /usr/local/bin/pip
   become: yes
 
 - name: "Config directory"
