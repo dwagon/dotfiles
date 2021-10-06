@@ -4,6 +4,7 @@
   with_items:
     - git
     - git-flow
+    - pre-commit
   when: ansible_distribution == "MacOSX"
 
 - name: "install git on ubuntu"

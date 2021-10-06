@@ -19,12 +19,6 @@
 - name: "vim configdir"
   copy: src=dot_vim dest={{ansible_user_dir}}/.vim
 
-
-- name: install antigen
-  git: 
-    repo=https://github.com/scrooloose/syntastic.git
-    dest={{ansible_user_dir}}/.vim/bundle
-
 - name: install vim autoload dir
   file:
       path: "{{ansible_user_dir}}/.vim/autoload" 
@@ -39,3 +33,13 @@
   get_url:
     url: https://tpo.pe/pathogen.vim
     dest: "{{ansible_user_dir}}/.vim/autoload/pathogen.vim"
+
+- name: install black
+  git:
+    repo=https://github.com/ambv/black.git
+    dest={{ansible_user_dir}}/.vim/bundle/black
+
+- name: install antigen
+  git: 
+    repo=https://github.com/vim-syntastic/syntastic.git
+    dest={{ansible_user_dir}}/.vim/bundle/syntastic
