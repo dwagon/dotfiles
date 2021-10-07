@@ -5,9 +5,8 @@
     - awscli
     - azure-cli
     - saml2aws
-    - terraform
     - terragrunt
-    - tfswitch
+    - warrensbox/tap/tfswitch
   when: ansible_distribution == "MacOSX"
 
 - name: "install misc bits on macos"
