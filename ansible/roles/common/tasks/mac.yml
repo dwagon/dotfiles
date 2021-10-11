@@ -7,6 +7,7 @@
     - saml2aws
     - terragrunt
     - warrensbox/tap/tfswitch
+    - checkov
   when: ansible_distribution == "MacOSX"
 
 - name: "install misc bits on macos"
