@@ -21,11 +21,11 @@
 
 - name: install vim autoload dir
   file:
-      path: "{{ansible_user_dir}}/.vim/autoload" 
+      path: "{{ansible_user_dir}}/.vim/autoload"
       state: directory
 
 - name: install vim bundle dir
-  file: 
+  file:
     path: "{{ansible_user_dir}}/.vim/bundle"
     state: directory
 
@@ -40,6 +40,11 @@
     dest={{ansible_user_dir}}/.vim/bundle/black
 
 - name: install antigen
-  git: 
+  git:
     repo=https://github.com/vim-syntastic/syntastic.git
     dest={{ansible_user_dir}}/.vim/bundle/syntastic
+
+- name: install terraform
+  git:
+    repo=https://github.com/hashivim/vim-terraform.git
+    dest={{ansible_user_dir}}/.vim/bundle/vim-terraform
