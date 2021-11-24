@@ -82,3 +82,5 @@ cabbrev w!! w !sudo tee % >/dev/null
 nnoremap <silent> <Tab><Tab> <C-w>w
 
 set matchpairs+=<:>    " make < and > match
+let g:terraform_fmt_on_save = 1
+
