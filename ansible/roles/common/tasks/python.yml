@@ -12,7 +12,6 @@
 - name: "install python on ubuntu"
   apt: name={{item}} state=present
   with_items:
-    - python-virtualenv
     - virtualenvwrapper
     - python3
     - python3-pip
