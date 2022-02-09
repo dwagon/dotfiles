@@ -9,7 +9,7 @@
   become: yes
 
 - name: "install vim on ubuntu"
-  apt: name=vim state=installed
+  apt: name=vim state=present
   when: ansible_distribution == "Ubuntu"
   become: yes
 

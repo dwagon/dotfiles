@@ -4,7 +4,7 @@
   when: ansible_distribution == "MacOSX"
 
 - name: "install zsh on ubuntu"
-  apt: name=zsh state=installed
+  apt: name=zsh state=present
   when: ansible_distribution == "Ubuntu"
   become: yes
 

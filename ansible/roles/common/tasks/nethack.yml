@@ -6,7 +6,7 @@
   when: ansible_distribution == "MacOSX"
 
 - name: "install nethack on ubuntu"
-  apt: name={{item}} state=installed
+  apt: name={{item}} state=present
   with_items:
     - nethack-console
   when: ansible_distribution == "Ubuntu"
