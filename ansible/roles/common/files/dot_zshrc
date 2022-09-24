@@ -1,8 +1,8 @@
-export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:$HOME/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:$HOME/bin
 source ~/antigen/antigen.zsh
 unset LS_COLORS
 umask 022
-export LESS="-XRF $LESS"
+export LESS="-XRF"
 export RPROMPT=%~
 export PROMPT='%m %# '
 setopt hist_ignore_all_dups
@@ -16,12 +16,12 @@ else
     export EDITOR=vi
 fi
 export PAGER=less
-#source .zsh/git-flow-completion.zsh
+#source ~/.zsh/git-flow-completion.zsh
 
 
 antigen use oh-my-zsh
 antigen bundle git
-#antigen bundle python
+antigen bundle python
 #antigen bundle lein
 #antigen bundle command-not-found
 
@@ -46,9 +46,6 @@ export RPROMPT='%~ %{$fg[green]%}$(current_branch)%{$reset_color%}'
 
 export WORKON_HOME=$HOME/.venvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-if [ -f ~/Library/Python/3.9/bin/virtualenvwrapper.sh ]; then
-source ~/Library/Python/3.9/bin/virtualenvwrapper.sh
-fi
 
 # pip zsh completion start
 function _pip_completion {
