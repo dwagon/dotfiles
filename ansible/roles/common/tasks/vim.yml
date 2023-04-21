@@ -45,5 +45,6 @@
     dest={{ansible_user_dir}}/.vim/bundle/vim-terraform
 
 - name: install ale linter
+  git:
     repo=https://github.com/dense-analysis/ale.git
     dest={{ansible_user_dir}}/.vim/bundle/ale
