@@ -36,15 +36,16 @@
 
 - name: install black
   git:
-    repo=https://github.com/ambv/black.git
-    dest={{ansible_user_dir}}/.vim/bundle/black
+    repo: https://github.com/ambv/black.git
+    dest: "{{ansible_user_dir}}/.vim/bundle/black"
 
 - name: install terraform
   git:
-    repo=https://github.com/hashivim/vim-terraform.git
-    dest={{ansible_user_dir}}/.vim/bundle/vim-terraform
+    repo: https://github.com/hashivim/vim-terraform.git
+    dest: "{{ansible_user_dir}}/.vim/bundle/vim-terraform"
 
 - name: install ale linter
   git:
-    repo=https://github.com/dense-analysis/ale.git
-    dest={{ansible_user_dir}}/.vim/bundle/ale
+    repo: https://github.com/dense-analysis/ale.git
+    dest: "{{ansible_user_dir}}/.vim/bundle/ale"
+
