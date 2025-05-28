@@ -2,3 +2,4 @@ OPTIONS=showexp,showscore,time
 OPTIONS=rest_on_space,DECgraphics,!autopickup
 OPTIONS=color,hilite_pet,lit_corridor
 OPTIONS=catname:Gerrouofit,dogname:Hereboy
+OPTIONS=!tutorial
