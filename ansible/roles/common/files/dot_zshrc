@@ -39,7 +39,7 @@ antigen apply
 
 # Time=%{$fg[blue]%}%D{[%I:%M]}%{$reset_color%}
 export PROMPT='%{$fg_bold[green]%}%n@%m %{$fg[blue]%}%#%{$reset_color%} '
-export RPROMPT='%~ %{$fg[green]%}$(current_branch)%{$reset_color%}'
+export RPROMPT='%~ %{$fg[green]%}$(git_current_branch)%{$reset_color%}'
 
 #export PATH=$HOME/.rbenv/bin:$PATH
 #eval "$(rbenv init -)"
