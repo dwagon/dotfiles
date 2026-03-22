@@ -1,0 +1,22 @@
+---
+
+- name: "install nfs client"
+  apt: name="{{item}}" state=present
+  with_items:
+    - nfs-common
+  become: yes
+
+- name: Create /backup directory
+  ansible.builtin.file:
+    path: /Backups
+    state: directory
+    mode: '0755'
+  become: yes
+
+- name: Mount an NFS volume
+  ansible.posix.mount:
+    src: windyarm.local:/volume1/Backups
+    path: /Backups
+    state: mounted
+    fstype: nfs
+  become: yes
