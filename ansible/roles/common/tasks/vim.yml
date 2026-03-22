@@ -32,6 +32,7 @@
 - name: install pathogen
   get_url:
     url: https://tpo.pe/pathogen.vim
+    validate_certs: no
     dest: "{{ansible_user_dir}}/.vim/autoload/pathogen.vim"
 
 - name: install black

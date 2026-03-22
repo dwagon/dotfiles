@@ -12,6 +12,7 @@
     state: directory
     mode: '0755'
   become: yes
+  ignore_errors: true
 
 - name: Mount an NFS volume
   ansible.posix.mount:
@@ -20,3 +21,13 @@
     state: mounted
     fstype: nfs
   become: yes
+
+- name: "install mediawiki backup script"
+  copy: src=backup_mediawiki dest=/usr/local/bin/.
+  become: yes
+
+- name: Backup mediawiki
+  ansible.builtin.cron:
+    name: "mediawiki backup"
+    special_time: daily
+    job: "/usr/local/bin/backup_mediawiki"
