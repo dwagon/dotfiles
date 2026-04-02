@@ -1,0 +1,4 @@
+---
+- name: "prometheus config file"
+  copy: src=prometheus.yml dest=/etc/prometheus/prometheus.yml
+  become: yes

@@ -1,0 +1,30 @@
+scrape_configs:
+  - job_name: "prometheus"
+
+    static_configs:
+      - targets: ["geezel:9090"]
+       # The label name is added as a label `label_name=<label_value>` to any timeseries scraped from this config.
+        labels:
+          app: "prometheus"
+
+  - job_name: docker
+    static_configs:
+      - targets: ["geezel:9323"]
+
+  - job_name: node
+    static_configs:
+      - targets: ["geezel:9100", "leech:9100", "miskatonic:9100", "zoomer:9100"]
+
+  - job_name: "tasmota"
+    metrics_path: /probe
+    static_configs:
+       - targets:
+         - chestfreezer
+         - verticalfreezer
+    relabel_configs:
+       - source_labels: [__address__]
+         target_label: __param_target
+       - source_labels: [__param_target]
+         target_label: device
+       - target_label: __address__
+         replacement: geezel:8000

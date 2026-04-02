@@ -1,0 +1,19 @@
+---
+- name: "install docker-compose on ubuntu"
+  apt: name="{{item}}" state=present
+  with_items:
+    - docker-compose-v2
+  when: ansible_distribution == "Ubuntu"
+  become: yes
+
+- name: "add user to docker group"
+  ansible.builtin.user:
+    name: 'dwagon'
+    groups: docker
+    append: true
+  when: ansible_distribution == "Ubuntu"
+  become: yes
+
+- name: "docker daemon.json file"
+  copy: src=docker_daemon.json dest=/etc/docker/daemon.json
+  become: yes

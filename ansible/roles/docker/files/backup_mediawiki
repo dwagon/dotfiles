@@ -1,0 +1,13 @@
+#!/bin/bash
+# Backup docker based mediawiki
+DB_NAME=my_wiki
+USERNAME=wikiuser
+PASSWORD=example
+BACKUP_DIR=/Backups/mediawiki
+
+container=`docker ps --filter "name=mw_database" -q`
+date_str=`date +'%Y%m%d'`
+
+docker exec -t  $container mariadb-dump -u $USERNAME --password=$PASSWORD $DB_NAME > $BACKUP_DIR/db_$date_str.sql
+
+docker run --rm -v home_dc_mw_images:/source -v $BACKUP_DIR:/backup busybox tar -cz -C /source -f /backup/images_$date_str.tar.gz .
