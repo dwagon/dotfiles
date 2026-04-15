@@ -5,3 +5,8 @@
     - prometheus-node-exporter
     - prometheus-blackbox-exporter
   become: yes
+
+---
+- name: "prometheus blackbox config file"
+  copy: src=blackbox.yml dest=/etc/prometheus/blackbox.yml
+  become: yes
