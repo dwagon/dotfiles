@@ -7,10 +7,6 @@ scrape_configs:
         labels:
           app: "prometheus"
 
-  - job_name: docker
-    static_configs:
-      - targets: ["geezel:9323"]
-
   - job_name: node
     static_configs:
       - targets: ["geezel:9100", "leech:9100", "miskatonic:9100", "zoomer:9100"]

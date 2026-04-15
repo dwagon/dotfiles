@@ -1,0 +1,7 @@
+---
+- name: "install prometheus exporters on ubuntu"
+  apt: name="{{item}}" state=present
+  with_items:
+    - prometheus-node-exporter
+    - prometheus-blackbox-exporter
+  become: yes
