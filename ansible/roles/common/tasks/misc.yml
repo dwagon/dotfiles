@@ -13,17 +13,3 @@
 - name: "ssh config"
   copy: src=ssh_config_mac dest={{ansible_user_dir}}/.ssh/config
   when: ansible_distribution == "MacOSX"
-
-- name: "install lvm2 on ubuntu"
-  apt: name="{{item}}" state=present
-  with_items:
-    - lvm2
-  when: ansible_distribution == "Ubuntu"
-  become: yes
-
-- name: "install prometheus node exporter on ubuntu"
-  apt: name="{{item}}" state=present
-  with_items:
-    - prometheus-node-exporter
-  when: ansible_distribution == "Ubuntu"
-  become: yes

@@ -7,10 +7,6 @@ scrape_configs:
         labels:
           app: "prometheus"
 
-  - job_name: docker
-    static_configs:
-      - targets: ["geezel:9323"]
-
   - job_name: node
     static_configs:
       - targets: ["geezel:9100", "leech:9100", "miskatonic:9100", "zoomer:9100"]
@@ -28,3 +24,53 @@ scrape_configs:
          target_label: device
        - target_label: __address__
          replacement: geezel:8000
+
+  - job_name: 'blackbox_exporter'
+    static_configs:
+      - targets: ["geezel:9115", "leech:9115"]
+
+  - job_name: 'blackbox_ping'
+    metrics_path: /probe
+    params:
+      module: [icmp]
+    static_configs:
+      - targets:
+        - 8.8.8.8
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - target_label: instance
+        replacement: blackbox
+      - target_label: __address__
+        replacement: geezel:9115
+
+  - job_name: 'blackbox_dns'
+    metrics_path: /probe
+    params:
+      module: [dns_udp]
+    static_configs:
+      - targets:
+        - ford.com
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: geezel:9115
+
+  - job_name: 'blackbox_http'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+        - http://google.com/
+        - https://google.com/
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: geezel:9115
