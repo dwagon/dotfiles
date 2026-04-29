@@ -1,8 +1,14 @@
 ---
+- name: "include vars"
+  include_vars:
+    dir: "vars"
+
 - name: "prometheus config file"
   copy: src=prometheus.yml dest=/etc/prometheus/prometheus.yml
-  become: yes
+  become: true
 
 - name: "alertmanger config file"
-  copy: src=alertmanager.yml dest=/etc/prometheus/alertmanager.yml
-  become: yes
+  template:
+    src=alertmanager.yml.j2
+    dest=/etc/prometheus/alertmanager.yml
+  become: true

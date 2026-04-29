@@ -11,6 +11,10 @@
   apt: name=traceroute state=present
   when: ansible_distribution == "Ubuntu"
 
+- name: "install yamllint on Ubuntu"
+  apt: name=yamllint state=present
+  when: ansible_distribution == "Ubuntu"
+
 - name: "ssh dir"
   file: path={{ansible_user_dir}}/.ssh state=directory
 
