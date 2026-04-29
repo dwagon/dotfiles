@@ -7,6 +7,10 @@
   homebrew: name=wget state=installed
   when: ansible_distribution == "MacOSX"
 
+- name: "install traceroute on Ubuntu"
+  apt: name=traceroute state=present
+  when: ansible_distribution == "Ubuntu"
+
 - name: "ssh dir"
   file: path={{ansible_user_dir}}/.ssh state=directory
 
