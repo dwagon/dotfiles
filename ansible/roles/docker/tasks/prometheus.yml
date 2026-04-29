@@ -2,3 +2,7 @@
 - name: "prometheus config file"
   copy: src=prometheus.yml dest=/etc/prometheus/prometheus.yml
   become: yes
+
+- name: "alertmanger config file"
+  copy: src=alertmanager.yml dest=/etc/prometheus/alertmanager.yml
+  become: yes
