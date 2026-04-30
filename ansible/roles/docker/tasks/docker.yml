@@ -4,7 +4,7 @@
   with_items:
     - docker-compose-v2
   when: ansible_distribution == "Ubuntu"
-  become: yes
+  become: true
 
 - name: "add user to docker group"
   ansible.builtin.user:
@@ -12,8 +12,8 @@
     groups: docker
     append: true
   when: ansible_distribution == "Ubuntu"
-  become: yes
+  become: true
 
 - name: "docker daemon.json file"
   copy: src=docker_daemon.json dest=/etc/docker/daemon.json
-  become: yes
+  become: true

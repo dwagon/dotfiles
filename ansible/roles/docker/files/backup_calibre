@@ -1,0 +1,7 @@
+#!/bin/bash
+# Backup docker based calibre
+CALIBRE_DIR=/home/dwagon/code/home_dc/calibre # Need to move somewhere better
+BACKUP_DIR=/Backups/calibre
+
+date_str=`date +'%Y%m%d'`
+tar -C $CALIBRE_DIR -czf $BACKUP_DIR/calibre_${date_str}.tar.gz calibre
