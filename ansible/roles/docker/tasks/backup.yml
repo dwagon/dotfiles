@@ -4,14 +4,14 @@
   apt: name="{{item}}" state=present
   with_items:
     - nfs-common
-  become: yes
+  become: true
 
 - name: Create /backup directory
   ansible.builtin.file:
     path: /Backups
     state: directory
     mode: '0755'
-  become: yes
+  become: true
   ignore_errors: true
 
 - name: Mount an NFS volume
@@ -20,20 +20,44 @@
     path: /Backups
     state: mounted
     fstype: nfs
-  become: yes
+  become: true
 
 - name: "install mediawiki backup script"
-  ansible.builtin.copy: 
-    src: backup_mediawiki 
+  copy:
+    src: backup_mediawiki
     dest: /usr/local/bin/.
     mode: '0755'
     owner: root
     group: root
-  become: yes
+  become: true
 
 - name: Backup mediawiki
-  ansible.builtin.cron:
+  cron:
     name: "mediawiki backup"
     special_time: daily
     job: "/usr/local/bin/backup_mediawiki"
-  become: yes
+  become: true
+
+- name: Create /Backups/calibre directory
+  ansible.builtin.file:
+    path: /Backups/calibre
+    state: directory
+    mode: '0755'
+  become: true
+  ignore_errors: true
+
+- name: "install calibre backup script"
+  copy:
+    src: backup_calibre
+    dest: /usr/local/bin/.
+    mode: '0755'
+    owner: root
+    group: root
+  become: true
+
+- name: Backup calibre
+  cron:
+    name: "calibre backup"
+    special_time: daily
+    job: "/usr/local/bin/backup_calibre"
+  become: true
