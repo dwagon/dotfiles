@@ -1,9 +1,12 @@
+---
+rule_files:
+  - "/etc/prometheus/rules/*.rules"
+
 scrape_configs:
   - job_name: "prometheus"
 
     static_configs:
       - targets: ["geezel:9090"]
-       # The label name is added as a label `label_name=<label_value>` to any timeseries scraped from this config.
         labels:
           app: "prometheus"
 
@@ -14,16 +17,16 @@ scrape_configs:
   - job_name: "tasmota"
     metrics_path: /probe
     static_configs:
-       - targets:
-         - chestfreezer
-         - verticalfreezer
+      - targets:
+          - chestfreezer
+          - verticalfreezer
     relabel_configs:
-       - source_labels: [__address__]
-         target_label: __param_target
-       - source_labels: [__param_target]
-         target_label: device
-       - target_label: __address__
-         replacement: geezel:8000
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: device
+      - target_label: __address__
+        replacement: geezel:8000
 
   - job_name: 'blackbox_exporter'
     static_configs:
@@ -35,7 +38,7 @@ scrape_configs:
       module: [icmp]
     static_configs:
       - targets:
-        - 8.8.8.8
+          - 8.8.8.8
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
@@ -50,7 +53,7 @@ scrape_configs:
       module: [dns_udp]
     static_configs:
       - targets:
-        - ford.com
+          - ford.com
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
@@ -65,8 +68,8 @@ scrape_configs:
       module: [http_2xx]
     static_configs:
       - targets:
-        - http://google.com/
-        - https://google.com/
+          - http://google.com/
+          - https://google.com/
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
