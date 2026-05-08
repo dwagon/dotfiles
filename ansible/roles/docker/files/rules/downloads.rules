@@ -1,0 +1,10 @@
+groups:
+- name: example
+  rules:
+  - alert: Download Available
+    expr: downloads_num_downloads>0
+    labels:
+      severity: info
+    annotations:
+      summary: "Download available"
+      description: "Download is available"
